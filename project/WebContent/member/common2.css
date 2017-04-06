@@ -1,0 +1,7 @@
+caption { font-size:20px; line-height:160%; font-weight:bold; }
+body { background-color: #d3dbfe; }
+table { background-color: #ffffff; width: 30%; 
+	border: 1px solid #d3dbfe; text-align: center;	}
+th { background-color: #ffffff; color: black; width:20%;}
+th, td { padding: 10px; border: 1px solid black; }
+tr:hover { background-color: #d4d4d4; color: #000040; } 
