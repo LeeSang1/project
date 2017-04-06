@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberns">
+	  <resultMap id="memberResult" 	type="member">
+		    <result property="id" 				 column="id"/>
+		    <result property="password" 		   column="password"/>
+		    <result property="name" 		   column="name"/>
+		    <result property="address" 		column="address"/>
+		    <result property="birthdate" 				column="birthdate"/>
+		    <result property="tel" 				column="tel"/>
+		    <result property="nickname" 				column="nickname"/>
+		    <result property="money" 				column="money"/>
+		    <result property="buynum" 				column="buynum"/>
+		    <result property="mgr_level" 				column="mgr_level"/>
+		    <result property="reg_date"    column="reg_date"/>
+	  </resultMap>
+	  <!-- parameterType 실행한 결과를 받아오는 타입 -->
+	  <!--  resultType 결과를 보낸는 타입 -->
+	<select id="confirm" parameterType="string" resultType="string">
+		select id from member2 where id=#{id}
+	</select>
+	<select id="check" parameterType="string" resultType="string">
+		select pass from member2 where id=#{id} and del != 'y'
+	</select>
+	<select id="list" parameterType="hashMap" resultMap="memberResult">
+		select * from (select a.*, rownum rn
+		   from (select * from member2 order by reg_date desc) a)
+		   where rn between #{startRow} and #{endRow}
+	</select>
+	<select id="select" parameterType="string" resultType="member">
+		select * from member2 where id=#{id} and del !='y'
+	</select>
+	<select id="getTotal" resultType="int">
+		select count(*) from member2
+	</select>
+	<update id="update" parameterType="member">
+		update member2 set pass=#{pass},name=#{name},
+			address=#{address},tel=#{tel} where id=#{id}
+	</update>
+	<delete id="delete" parameterType="string">
+		update member2 set del='y' where id=#{id}
+	</delete>
+	<insert id="insert" parameterType="member">
+		insert into member2 values (#{id},#{pass},
+			#{name},#{address},#{tel},sysdate,'n')
+	</insert>
+</mapper>
