@@ -42,7 +42,8 @@
 		update member2 set del='y' where id=#{id}
 	</delete>
 	<insert id="insert" parameterType="member">
-		insert into member2 values (#{id},#{pass},
-			#{name},#{address},#{tel},sysdate,'n')
+		insert into member values (#{id},#{password},
+			#{name},#{address},#{birthdate},#{tel},#{nickname},
+			0,0,0,sysdate)
 	</insert>
 </mapper>

@@ -14,7 +14,8 @@ create table member (
   mgr_level number default 0,
   reg_date date not null
 );
-
+alter table member modify birthdate date;
+select * from member;
 -- 주문테이블
 create table jumun (
   order_num number primary key,

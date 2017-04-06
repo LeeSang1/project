@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import model.Member;
+
 public class MemberDao {
 	private static MemberDao instance; 
 	private MemberDao() {}
@@ -29,4 +31,8 @@ public class MemberDao {
 	      System.out.println(e.getMessage());
 	    }
 	  }
+	public int insert(Member member) {
+		
+		return session.insert("memberns.insert",member);
+	}
 }
