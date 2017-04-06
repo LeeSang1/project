@@ -8,11 +8,19 @@
 <link rel="stylesheet" type="text/css" href="common2.css">
 </head>
 <body>
-<form action="login.jsp">
+<form action="login.do">
 <table><caption>LOG-IN</caption>
-	<tr><th>ID</th><td><input type="text" name="id" required="required"></td></tr>
-	<tr><th>PASSWORD</th><td><input type="password" name="password" required="required"></td></tr>
-	<tr><th colspan="2"><input type="submit" value="login" align="center"></th></tr>
+	<tr>
+		<th>ID</th>
+		<td><input type="text" name="id" required="required"></td>
+	</tr>
+	<tr>
+		<th>PASSWORD</th>
+		<td><input type="password" name="password" required="required"></td></tr>
+	<tr>
+		<th colspan="2"><input type="submit" value="login" 
+		align="center"></th>
+	</tr>
 </table>
 </form>
 <button onclick="location.href='joinForm.jsp'">가입하기</button> 
